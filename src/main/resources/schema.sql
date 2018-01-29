@@ -1,0 +1,45 @@
+
+DROP TABLE IF EXISTS superhero;
+
+
+CREATE TABLE superhero 
+(
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  webscraperorder varchar(20) NOT NULL,
+  heroname varchar(50) NOT NULL,
+  herolinkhref varchar(100) NOT NULL,
+  intelligence decimal(10,0) DEFAULT NULL,
+  strength decimal(10,0) DEFAULT NULL,
+  speed decimal(10,0) DEFAULT NULL,
+  durability decimal(10,0) DEFAULT NULL,
+  power decimal(10,0) DEFAULT NULL,
+  combat decimal(10,0) DEFAULT NULL,
+  fullname varchar(100) NOT NULL,
+  alteregos varchar(50) NOT NULL,
+  aliases varchar(300) NOT NULL,
+  placeofbirth varchar(100) NOT NULL,
+  firstappearance varchar(300) NOT NULL,
+  publisher varchar(20) DEFAULT NULL,
+  alignment varchar(10) NOT NULL,
+  gender varchar(10) NOT NULL,
+  race varchar(20) DEFAULT NULL,
+  height varchar(30) NOT NULL,
+  weight varchar(40) NOT NULL,
+  eyes varchar(30) NOT NULL,
+  hairs varchar(20) DEFAULT NULL,
+  occupation varchar(255) NOT NULL,
+  base varchar(300) NOT NULL,
+  teams varchar(500) DEFAULT NULL,
+  relatives varchar(2000) NOT NULL,
+  background varchar(50) DEFAULT NULL,
+  backgroundhref varchar(100) DEFAULT NULL,
+  history varchar(11000) DEFAULT NULL,
+  powerslink varchar(50) DEFAULT NULL,
+  powerslinkhref varchar(70) DEFAULT NULL,
+  powers varchar(20000) DEFAULT NULL,
+  equipmentlink varchar(50) DEFAULT NULL,
+  equipmentlinkhref varchar(100) DEFAULT NULL,
+  equipments varchar(5000) DEFAULT NULL,
+  weapons varchar(7000) DEFAULT NULL,
+  imagesrc varchar(50) NOT NULL
+);
