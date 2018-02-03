@@ -72,6 +72,8 @@ public class Superhero {
 	
 	private String weapons;
 
+	private String imagesrc;
+
 	public Long getId() {
 		return id;
 	}
@@ -320,4 +322,12 @@ public class Superhero {
 		this.weapons = weapons;
 	}
 
+	public String getImagesrc() {
+		return imagesrc;
+	}
+
+	public void setImagesrc(String imagesrc) {
+		this.imagesrc = imagesrc;
+	}
+	
 }
