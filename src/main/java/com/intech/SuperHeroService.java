@@ -1,5 +1,7 @@
 package com.intech;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,14 @@ import com.intech.model.Superhero;
 public class SuperHeroService {
 	
 	@Autowired
-	private SuperHeroRepository repo;
+	private SuperHeroRepository superHeroRepository;
 	
 	public Iterable<Superhero> list(){
-		return repo.findAll();
+		return superHeroRepository.findAll();
+	}
+	
+	public Optional<Superhero> get(Long id){
+		return superHeroRepository.findById(id);
 	}
 	
 }
