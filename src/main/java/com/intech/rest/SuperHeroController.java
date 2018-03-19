@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.intech.SuperHeroService;
+import com.intech.services.SuperHeroService;
 import com.intech.model.Superhero;
 
 @Controller
@@ -51,7 +51,7 @@ public class SuperHeroController {
 	@GetMapping(value = "/image", produces = "image/jpg")
 	public @ResponseBody ResponseEntity<byte[]> image(HttpServletRequest request) throws Exception {
 		logger.info("image");
-		String scraperorder = superHeroService.list().iterator().next().getWebscraperorder();
+		String scraperorder = superHeroService.list().iterator().next().getWebscraperOrder();
 		return ResponseEntity.ok(StreamUtils.copyToByteArray(
 				request.getServletContext().getResourceAsStream("images/" + scraperorder + "-image.jpg")));
 	}
