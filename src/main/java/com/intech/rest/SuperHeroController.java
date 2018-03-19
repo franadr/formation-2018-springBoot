@@ -11,6 +11,7 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,6 +40,12 @@ public class SuperHeroController {
 		logger.info("get : " + id);
 		return superHeroService.get(Long.valueOf(id)).get();
 		// TODO : Java formation => handle no such element Exception
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+	public @ResponseBody Superhero put(@PathVariable(value = "id") String id, @RequestBody Superhero superhero) {
+		logger.info("put : " + id);
+		return superHeroService.put(Long.valueOf(id), superhero);
 	}
 
 	@GetMapping(value = "/image", produces = "image/jpg")
