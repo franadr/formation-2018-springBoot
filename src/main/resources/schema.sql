@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS superhero;
 
 
-CREATE TABLE superhero 
+CREATE TABLE superhero
 (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   webscraper_order varchar(20) NOT NULL,

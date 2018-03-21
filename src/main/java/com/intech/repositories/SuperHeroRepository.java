@@ -1,4 +1,4 @@
-package com.intech.db;
+package com.intech.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
