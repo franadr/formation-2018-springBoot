@@ -2,8 +2,8 @@ package com.intech.controllers;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.intech.dto.SuperheroDto;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +18,11 @@ import com.intech.services.SuperheroService;
 
 import io.swagger.annotations.ApiOperation;
 
+@Log
 @RestController
 @CrossOrigin
 @RequestMapping("/superheroes")
 public class SuperheroController {
-
-	private static Logger logger = LoggerFactory.getLogger(SuperheroController.class);
 
 	@Autowired
 	private SuperheroService superheroService;
@@ -31,22 +30,21 @@ public class SuperheroController {
 	@ApiOperation(value = "Retrieve the full heroes list")
 	@GetMapping
 	public Iterable<SuperheroDto> getAllSuperHeroes() {
-		logger.info("GET /superheroes");
+		log.info("GET /superheroes");
 		return superheroService.findAllSuperHeroes();
 	}
 
 	@ApiOperation(value = "Retrieve information about a specific superhero")
 	@GetMapping(value = "/{id}")
 	public @ResponseBody SuperheroDto getASuperHero(@PathVariable Long id) {
-		logger.info("GET /superheroes/" + id);
+		log.info("GET /superheroes/" + id);
 		return superheroService.findSuperHeroById(id);
-		// TODO : Java formation => handle no such element Exception
 	}
 
 	@ApiOperation(value = "Uptade information of a specific superhero")
 	@PutMapping(value = "/{id}")
 	public void updateASuperHero(@PathVariable Long id, @RequestBody @Valid SuperheroDto superHero) {
-		logger.info("PUT /superheroes/" + id);
+		log.info("PUT /superheroes/" + id);
 		superheroService.updateSuperHero(id, superHero);
 	}
 
