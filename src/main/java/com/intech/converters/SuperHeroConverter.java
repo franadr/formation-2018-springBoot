@@ -11,6 +11,7 @@ public final class SuperHeroConverter implements Converter<Superhero,SuperheroDt
     @Override
     public SuperheroDto convert(Superhero superhero) {
         SuperheroDto dto = new SuperheroDto();
+        dto.setId(superhero.getId());
         dto.setFullName(superhero.getFullName());
         dto.setPlaceOfBirth(superhero.getPlaceOfBirth());
         dto.setHeroName(superhero.getHeroName());

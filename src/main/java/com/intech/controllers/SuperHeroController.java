@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.intech.services.SuperHeroService;
 
+import javax.validation.Valid;
+
 @Controller
 @CrossOrigin
 @RequestMapping("/superheroes")
@@ -44,7 +46,7 @@ public class SuperHeroController {
 			value = "Uptade information of a specific superhero"
 	)
 	@PutMapping(value = "/{id}")
-	public void updateASuperHero(@PathVariable Long id, @RequestBody SuperheroDto superHero) {
+	public void updateASuperHero(@PathVariable Long id, @RequestBody @Valid SuperheroDto superHero) {
 		logger.info("PUT /superheroes/" + id);
 		superHeroService.updateSuperHero(id, superHero);
 	}
