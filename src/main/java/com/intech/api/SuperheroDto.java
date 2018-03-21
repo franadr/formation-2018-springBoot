@@ -68,6 +68,6 @@ public class SuperheroDto {
 
     private String weapons;
 
-    private List<MemberDto> teamsUri;
+    private List<MemberDto> teams;
 
 }

@@ -18,7 +18,7 @@ public final class SuperheroConverter implements Converter<Superhero, SuperheroD
 		SuperheroDto dto = new SuperheroDto();
 		BeanUtils.copyProperties(superhero, dto);
 		dto.setImageSrc("/images/" + superhero.getWebscraperOrder() + "-image.jpg");
-		dto.setTeamsUri(superhero.getTeams().stream()
+		dto.setTeams(superhero.getTeams().stream()
 				.map(team-> new MemberDto(team.getName(),"/teams/"+team.getIdTeam()))
 				.collect(Collectors.toList()));
 		return dto;
