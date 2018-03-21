@@ -82,4 +82,8 @@ public class Superhero {
 			inverseJoinColumns = @JoinColumn(name = "id_team", referencedColumnName = "idTeam"))
 	private List<Team> teams;
 
+	public double getBaseDamages(){
+		return (combat+strength+speed+intelligence)/ 4.0 / 10.0;
+	}
+
 }

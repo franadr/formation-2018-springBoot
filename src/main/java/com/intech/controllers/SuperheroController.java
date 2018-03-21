@@ -2,7 +2,7 @@ package com.intech.controllers;
 
 import javax.validation.Valid;
 
-import com.intech.dto.SuperheroDto;
+import com.intech.api.SuperheroDto;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,8 +24,11 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/superheroes")
 public class SuperheroController {
 
-	@Autowired
-	private SuperheroService superheroService;
+	private final SuperheroService superheroService;
+
+	public SuperheroController(SuperheroService superheroService){
+		this.superheroService = superheroService;
+	}
 
 	@ApiOperation(value = "Retrieve the full heroes list")
 	@GetMapping

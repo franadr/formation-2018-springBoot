@@ -1,6 +1,7 @@
 package com.intech.controllers;
 
-import com.intech.dto.TeamDto;
+import com.intech.api.TeamDto;
+import com.intech.converters.TeamConverter;
 import com.intech.services.TeamService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.java.Log;
@@ -15,8 +16,11 @@ import javax.validation.Valid;
 @RequestMapping("/teams")
 public class TeamController {
 	
-	@Autowired
-	private TeamService teamService;
+	private final TeamService teamService;
+
+	public TeamController(TeamService teamService){
+		this.teamService = teamService;
+	}
 
 	@ApiOperation(
 			value = "Retrieve the full team list"

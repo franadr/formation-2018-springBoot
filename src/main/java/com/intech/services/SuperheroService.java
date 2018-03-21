@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import com.intech.converters.SuperheroConverter;
-import com.intech.dto.SuperheroDto;
+import com.intech.api.SuperheroDto;
 import com.intech.errors.exceptions.HeroNotFoundException;
 import com.intech.model.Superhero;
 import org.springframework.stereotype.Service;

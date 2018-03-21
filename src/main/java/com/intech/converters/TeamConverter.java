@@ -1,9 +1,7 @@
 package com.intech.converters;
 
-import com.intech.dto.MemberDto;
-import com.intech.dto.SuperheroDto;
-import com.intech.dto.TeamDto;
-import com.intech.model.Superhero;
+import com.intech.api.MemberDto;
+import com.intech.api.TeamDto;
 import com.intech.model.Team;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.convert.converter.Converter;

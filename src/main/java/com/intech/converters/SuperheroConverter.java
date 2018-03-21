@@ -1,11 +1,11 @@
 package com.intech.converters;
 
-import com.intech.dto.MemberDto;
+import com.intech.api.MemberDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import com.intech.dto.SuperheroDto;
+import com.intech.api.SuperheroDto;
 import com.intech.model.Superhero;
 
 import java.util.stream.Collectors;
@@ -22,6 +22,10 @@ public final class SuperheroConverter implements Converter<Superhero, SuperheroD
 				.map(team-> new MemberDto(team.getName(),"/teams/"+team.getIdTeam()))
 				.collect(Collectors.toList()));
 		return dto;
+	}
+
+	public MemberDto convertToMember(Superhero superhero){
+		return new MemberDto(superhero.getHeroName(),"/superheroes/"+superhero.getIdHero());
 	}
 
 }

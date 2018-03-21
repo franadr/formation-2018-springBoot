@@ -1,7 +1,7 @@
 package com.intech.services;
 
 import com.intech.converters.TeamConverter;
-import com.intech.dto.TeamDto;
+import com.intech.api.TeamDto;
 import com.intech.errors.exceptions.HeroNotFoundException;
 import com.intech.model.Team;
 import com.intech.repositories.TeamRepository;

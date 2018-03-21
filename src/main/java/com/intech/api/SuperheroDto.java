@@ -1,4 +1,4 @@
-package com.intech.dto;
+package com.intech.api;
 
 import lombok.Data;
 
