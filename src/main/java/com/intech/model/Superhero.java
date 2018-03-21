@@ -6,8 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
+@Entity(name = "hero")
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
@@ -16,13 +17,11 @@ public class Superhero {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long idHero;
 
 	private String fullName;
 
 	private String placeOfBirth;
-
-	private String imageSrc;
 
 	private String heroName;
 
@@ -66,11 +65,7 @@ public class Superhero {
 
 	private String base;
 
-	private String teams;
-
 	private String relatives;
-
-	private String background;
 
 	private String history;
 
@@ -79,5 +74,12 @@ public class Superhero {
 	private String equipments;
 
 	private String weapons;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "hero_teams",
+			joinColumns = @JoinColumn(name = "id_hero", referencedColumnName = "idHero"),
+			inverseJoinColumns = @JoinColumn(name = "id_team", referencedColumnName = "idTeam"))
+	private List<Team> teams;
 
 }

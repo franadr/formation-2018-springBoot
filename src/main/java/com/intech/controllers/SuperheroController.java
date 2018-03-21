@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.intech.services.SuperHeroService;
+import com.intech.services.SuperheroService;
 
 import javax.validation.Valid;
 
 @Controller
 @CrossOrigin
 @RequestMapping("/superheroes")
-public class SuperHeroController {
+public class SuperheroController {
 
-	private static Logger logger = LoggerFactory.getLogger(SuperHeroController.class);
+	private static Logger logger = LoggerFactory.getLogger(SuperheroController.class);
 
 	@Autowired
-	private SuperHeroService superHeroService;
+	private SuperheroService superheroService;
 
 	@ApiOperation(
 			value = "Retrieve the full heroes list"
@@ -28,7 +28,7 @@ public class SuperHeroController {
 	@GetMapping
 	public @ResponseBody Iterable<SuperheroDto> getAllSuperHeroes() {
 		logger.info("GET /superheroes");
-		return superHeroService.findAllSuperHeroes();
+		return superheroService.findAllSuperHeroes();
 	}
 
 	@ApiOperation(
@@ -38,7 +38,7 @@ public class SuperHeroController {
 	public @ResponseBody
 	SuperheroDto getASuperHero(@PathVariable Long id) {
 		logger.info("GET /superheroes/" + id);
-		return superHeroService.findSuperHeroById(id);
+		return superheroService.findSuperHeroById(id);
 		// TODO : Java formation => handle no such element Exception
 	}
 
@@ -48,7 +48,7 @@ public class SuperHeroController {
 	@PutMapping(value = "/{id}")
 	public void updateASuperHero(@PathVariable Long id, @RequestBody @Valid SuperheroDto superHero) {
 		logger.info("PUT /superheroes/" + id);
-		superHeroService.updateSuperHero(id, superHero);
+		superheroService.updateSuperHero(id, superHero);
 	}
 
 }

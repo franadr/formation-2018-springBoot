@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.intech.model.Superhero;
 
-public interface SuperHeroRepository extends CrudRepository<Superhero, Long> {
+public interface SuperheroRepository extends CrudRepository<Superhero, Long> {
 
 }

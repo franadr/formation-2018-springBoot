@@ -4,47 +4,46 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import com.intech.converters.SuperHeroConverter;
+import com.intech.converters.SuperheroConverter;
 import com.intech.dto.SuperheroDto;
 import com.intech.errors.exceptions.HeroNotFoundException;
 import com.intech.model.Superhero;
 import org.springframework.stereotype.Service;
 
-import com.intech.repositories.SuperHeroRepository;
+import com.intech.repositories.SuperheroRepository;
 
 @Service
-public class SuperHeroService {
+public class SuperheroService {
 
-	private SuperHeroRepository superHeroRepository;
+	private SuperheroRepository superheroRepository;
 
-	private SuperHeroConverter superHeroConverter;
+	private SuperheroConverter superheroConverter;
 
-	public SuperHeroService(SuperHeroRepository superHeroRepository, SuperHeroConverter superHeroConverter){
-	    this.superHeroRepository = superHeroRepository;
-	    this.superHeroConverter = superHeroConverter;
+	public SuperheroService(SuperheroRepository superheroRepository, SuperheroConverter superheroConverter){
+	    this.superheroRepository = superheroRepository;
+	    this.superheroConverter = superheroConverter;
     }
 
 	public List<SuperheroDto> findAllSuperHeroes() {
-		return StreamSupport.stream(superHeroRepository.findAll().spliterator(), false)
-                .map(superHeroConverter::convert)
+		return StreamSupport.stream(superheroRepository.findAll().spliterator(), false)
+                .map(superheroConverter::convert)
                 .collect(Collectors.toList());
 	}
 
 	public SuperheroDto findSuperHeroById(Long id) {
-		return superHeroRepository.findById(id)
-				.map(superHeroConverter::convert)
+		return superheroRepository.findById(id)
+				.map(superheroConverter::convert)
 				.orElseThrow(()->new HeroNotFoundException(id));
 	}
 
 	public void updateSuperHero(Long id, SuperheroDto superhero) {
-        Superhero existingHero = superHeroRepository.findById(id)
+        Superhero existingHero = superheroRepository.findById(id)
                 .orElseThrow(()->new HeroNotFoundException(id));
 
         Superhero modifiedHero = existingHero.toBuilder()
                 .aliases(superhero.getAliases())
                 .alignment(superhero.getAlignment())
                 .alterEgos(superhero.getAlterEgos())
-                .background(superhero.getBackground())
                 .base(superhero.getBase())
                 .combat(superhero.getCombat())
                 .durability(superhero.getDurability())
@@ -67,12 +66,11 @@ public class SuperHeroService {
                 .relatives(superhero.getRelatives())
                 .speed(superhero.getSpeed())
                 .strength(superhero.getStrength())
-                .teams(superhero.getTeams())
                 .weapons(superhero.getWeapons())
                 .weight(superhero.getWeight())
                 .build();
 
-        superHeroRepository.save(modifiedHero);
+        superheroRepository.save(modifiedHero);
 	}
 
 }

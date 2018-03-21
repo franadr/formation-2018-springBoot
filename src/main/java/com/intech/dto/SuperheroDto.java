@@ -3,11 +3,12 @@ package com.intech.dto;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class SuperheroDto {
 
-    private long id;
+    private long idHero;
 
     @NotNull
     private String fullName;
@@ -57,11 +58,7 @@ public class SuperheroDto {
 
     private String base;
 
-    private String teams;
-
     private String relatives;
-
-    private String background;
 
     private String history;
 
@@ -70,5 +67,7 @@ public class SuperheroDto {
     private String equipments;
 
     private String weapons;
+
+    private List<MemberDto> teamsUri;
 
 }

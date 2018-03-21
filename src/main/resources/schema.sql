@@ -1,13 +1,8 @@
-
-DROP TABLE IF EXISTS superhero;
-
-
-CREATE TABLE superhero
-(
-  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS hero;
+CREATE TABLE hero (
+  id_hero int(11) NOT NULL AUTO_INCREMENT,
   webscraper_order varchar(20) NOT NULL,
   hero_name varchar(50) NOT NULL,
-  hero_link_href varchar(100) NOT NULL,
   intelligence decimal(10,0) DEFAULT NULL,
   strength decimal(10,0) DEFAULT NULL,
   speed decimal(10,0) DEFAULT NULL,
@@ -16,9 +11,9 @@ CREATE TABLE superhero
   combat decimal(10,0) DEFAULT NULL,
   full_name varchar(100) NOT NULL,
   alter_egos varchar(50) NOT NULL,
-  aliases varchar(300) NOT NULL,
+  aliases text,
   place_of_birth varchar(100) NOT NULL,
-  first_appearance varchar(300) NOT NULL,
+  first_appearance text,
   publisher varchar(20) DEFAULT NULL,
   alignment varchar(10) NOT NULL,
   gender varchar(10) NOT NULL,
@@ -27,19 +22,26 @@ CREATE TABLE superhero
   weight varchar(40) NOT NULL,
   eyes varchar(30) NOT NULL,
   hairs varchar(20) DEFAULT NULL,
-  occupation varchar(255) NOT NULL,
-  base varchar(300) NOT NULL,
-  teams varchar(500) DEFAULT NULL,
-  relatives varchar(2000) NOT NULL,
-  background varchar(50) DEFAULT NULL,
-  background_href varchar(100) DEFAULT NULL,
-  history varchar(11000) DEFAULT NULL,
-  powers_link varchar(50) DEFAULT NULL,
-  powers_link_href varchar(70) DEFAULT NULL,
-  powers varchar(20000) DEFAULT NULL,
-  equipment_link varchar(50) DEFAULT NULL,
-  equipment_link_href varchar(100) DEFAULT NULL,
-  equipments varchar(5000) DEFAULT NULL,
-  weapons varchar(7000) DEFAULT NULL,
-  image_src varchar(50) NOT NULL
+  occupation text NOT NULL,
+  base text,
+  relatives text,
+  history text,
+  powers text,
+  equipments text,
+  weapons text,
+  PRIMARY KEY (id_hero)
+) ;
+
+DROP TABLE IF EXISTS hero_teams;
+CREATE TABLE hero_teams (
+  id_hero int(11) NOT NULL,
+  id_team int(11) NOT NULL,
+  PRIMARY KEY (id_hero,id_team)
+);
+
+DROP TABLE IF EXISTS teams;
+CREATE TABLE teams (
+  id_team int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(100) NOT NULL,
+  PRIMARY KEY (id_team)
 );
