@@ -1,12 +1,12 @@
 package com.intech.services;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import com.intech.converters.SuperHeroConverter;
 import com.intech.dto.SuperheroDto;
+import com.intech.errors.exceptions.HeroNotFoundException;
 import com.intech.model.Superhero;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +33,12 @@ public class SuperHeroService {
 	public SuperheroDto findSuperHeroById(Long id) {
 		return superHeroRepository.findById(id)
 				.map(superHeroConverter::convert)
-				.orElseThrow(NoSuchElementException::new);
+				.orElseThrow(()->new HeroNotFoundException(id));
 	}
 
 	public void updateSuperHero(Long id, SuperheroDto superhero) {
         Superhero existingHero = superHeroRepository.findById(id)
-                .orElseThrow(NoSuchElementException::new);
+                .orElseThrow(()->new HeroNotFoundException(id));
 
         Superhero modifiedHero = existingHero.toBuilder()
                 .aliases(superhero.getAliases())

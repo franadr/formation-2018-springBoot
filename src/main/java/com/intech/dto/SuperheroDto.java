@@ -4,10 +4,10 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
-
 @Data
 public class SuperheroDto {
-    // TODO add validation
+
+    private long id;
 
     @NotNull
     private String fullName;
