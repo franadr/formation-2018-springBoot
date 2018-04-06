@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import com.intech.converters.SuperheroConverter;
-import com.intech.api.SuperheroDto;
-import com.intech.errors.exceptions.HeroNotFoundException;
-import com.intech.model.Superhero;
 import org.springframework.stereotype.Service;
 
+import com.intech.api.SuperheroDto;
+import com.intech.converters.SuperheroConverter;
+import com.intech.errors.exceptions.HeroNotFoundException;
+import com.intech.model.Superhero;
 import com.intech.repositories.SuperheroRepository;
 
 @Service
@@ -71,6 +71,13 @@ public class SuperheroService {
                 .build();
 
         superheroRepository.save(modifiedHero);
+	}
+	
+	public void deleteSuperHeroById(Long id) {
+		Superhero existingHero = superheroRepository.findById(id)
+                .orElseThrow(()->new HeroNotFoundException(id));
+		
+		superheroRepository.delete(existingHero);
 	}
 
 }
