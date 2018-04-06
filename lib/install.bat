@@ -1,0 +1,1 @@
+mvn install:install-file -DpomFile=pom.xml -Dfile=springfox-data-rest-2.8.1-SNAPSHOT.jar
