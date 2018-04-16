@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,13 @@ public class SuperheroController {
 	public void updateASuperHero(@PathVariable Long id, @RequestBody @Valid SuperheroDto superHero) {
 		log.info("PUT /superheroes/" + id);
 		superheroService.updateSuperHero(id, superHero);
+	}
+
+	@ApiOperation(value = "Create a superhero")
+	@PostMapping(value = "")
+	public @ResponseBody SuperheroDto createASuperHero(@RequestBody SuperheroDto superHero) {
+		log.info("POST /superheroes/");
+		return superheroService.createSuperHeroLight(superHero);
 	}
 
 	@ApiOperation(value = "Delete a specific superhero")

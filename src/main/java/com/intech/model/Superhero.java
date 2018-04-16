@@ -16,7 +16,7 @@ import java.util.List;
 public class Superhero {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idHero;
 
 	private String fullName;
