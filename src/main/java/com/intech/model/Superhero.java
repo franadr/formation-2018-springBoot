@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "hero")
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Superhero {
 
+	private static final double GLOBAL_DAMAGE_COEF = 10.0 ;
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idHero;
@@ -83,7 +85,16 @@ public class Superhero {
 	private List<Team> teams;
 
 	public double getBaseDamages(){
-		return (combat+strength+speed+intelligence)/ 4.0 / 10.0;
+		List<Integer> skills = new ArrayList<>();
+		skills.add(combat);
+		skills.add(intelligence);
+		skills.add(speed);
+		skills.add(strength);
+
+		int sum = skills.stream()
+				.mapToInt(Integer::intValue)
+				.sum();
+		return sum / skills.size() / GLOBAL_DAMAGE_COEF;
 	}
 
 }

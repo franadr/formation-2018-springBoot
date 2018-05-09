@@ -33,14 +33,19 @@ public class JwtService {
     private String HEADER_STRING ;
     private KeyStore keyStore = null;
 
-
-
+    public JwtService() {
+        try {
+            this.keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String generateJwt(String username) {
 
         {
             try {
-                keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+
                 keyStore.load(new FileInputStream("myapp.jks"),"keystorepassword".toCharArray());
                 Key key = keyStore.getKey("heroes2","adriano17".toCharArray());
                 return Jwts.builder()
@@ -60,7 +65,7 @@ public class JwtService {
         PublicKey publicKey = null;
 
         try{
-        keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        
         keyStore.load(new FileInputStream("myapp.jks"),"keystorepassword".toCharArray());
         key = keyStore.getKey("heroes2","adriano17".toCharArray());
 
