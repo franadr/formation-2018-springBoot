@@ -1,29 +1,13 @@
 package com.intech.controllers;
 
-import javax.validation.Valid;
-
-import com.intech.services.AuthService;
-import com.intech.services.JwtService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.intech.api.AuthRequestDto;
 import com.intech.api.AuthResultDto;
-import com.intech.api.SuperheroDto;
-import com.intech.services.SuperheroService;
-
-import io.swagger.annotations.ApiOperation;
+import com.intech.services.AuthService;
+import com.intech.services.JwtService;
 import lombok.extern.java.Log;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Log
 @RestController
