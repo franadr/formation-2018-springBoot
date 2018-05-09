@@ -14,13 +14,18 @@ import com.intech.services.JwtService;
 import java.io.IOException;
 
 public class JWTAuthenticationFilter extends GenericFilterBean {
+  private JwtService jwtService;
+
+  public JWTAuthenticationFilter(JwtService jwtService) {
+    this.jwtService = jwtService;
+  }
 
   @Override
   public void doFilter(ServletRequest request,
              ServletResponse response,
              FilterChain filterChain)
       throws IOException, ServletException {
-    Authentication authentication = JwtService.getAuthentication((HttpServletRequest)request);
+    Authentication authentication = jwtService.getAuthentication((HttpServletRequest)request);
     SecurityContextHolder.getContext().setAuthentication(authentication);
     filterChain.doFilter(request,response);
   }
