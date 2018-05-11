@@ -28,10 +28,10 @@ public class JwtService {
     @Value("${security.jwt.secret}")
     private String SECRET ;
     @Value("${security.jwt.token.prefix}")
-    private String TOKEN_PREFIX ;
+    private  String TOKEN_PREFIX ;
     @Value("${security.jwt.header.string}")
-    private String HEADER_STRING ;
-    private KeyStore keyStore = null;
+    private  String HEADER_STRING ;
+    private  KeyStore keyStore = null;
 
     public JwtService() {
         try {
